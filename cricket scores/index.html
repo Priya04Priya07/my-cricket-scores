@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket Star - Tribute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+   :root {
+      --primary: #0d47a1;
+      --secondary: #1a237e;
+      --bg: #f0f4ff;
+      --white: #ffffff;
+      --highlight: #1565c0;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --heart: #ff6b81;
+      --soft-pink: #ffe3ec;
+      --soft-blue: #dce8ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    @keyframes popBounce {
+      0% {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #42a5f5, #1e88e5);
+      color: var(--white);
+      border: none;
+      border-radius: 14px;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px var(--shadow);
+    }
+
+    section {
+      width: 100%;
+      max-width: 1000px;
+      display: none;
+      padding: 30px 20px;
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 6px 20px var(--shadow);
+      margin-bottom: 30px;
+      animation: fadeInSection 1s ease-out forwards;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    @keyframes fadeInSection {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .profile img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--highlight);
+      box-shadow: 0 0 12px var(--highlight);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .stat-box {
+      background: var(--soft-blue);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform 0.2s;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-box h2 {
+      font-size: 1.6em;
+      margin-bottom: 5px;
+    }
+
+    .gallery, .romantic-photo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+.love-frame img, .gallery img {
+  width: 130px;
+  height: 130px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 3px 10px var(--shadow);
+  border: 4px solid var(--heart);
+  background: var(--soft-pink);
+  animation: popBounce 1.6s ease-in-out forwards;
+  opacity: 0; /* Initially set opacity to 0 */
+}
+
+/* Add staggered animation delay */
+.love-frame img:nth-child(1) {
+  animation-delay: 1.0s; /* No delay for the first image */
+}
+
+.love-frame img:nth-child(2) {
+  animation-delay: 1.2s; /* 0.2s delay for the second image */
+}
+
+.love-frame img:nth-child(3) {
+  animation-delay: 1.4s; /* 0.4s delay for the third image */
+}
+
+.love-frame img:nth-child(4) {
+  animation-delay: 1.6s; /* 0.6s delay for the fourth image */
+}
+
+.romantic-photo-grid .love-frame img:nth-child(1) {
+  animation-delay: 1s; /* No delay for the first image in page 7 */
+}
+
+.romantic-photo-grid .love-frame img:nth-child(2) {
+  animation-delay: 1.2s; /* 0.2s delay for the second image in page 7 */
+}
+
+.romantic-photo-grid .love-frame img:nth-child(3) {
+  animation-delay: 1.4s; /* 0.4s delay for the third image in page 7 */
+}
+
+.romantic-photo-grid .love-frame img:nth-child(4) {
+  animation-delay: 1.6s; /* 0.6s delay for the fourth image in page 7 */
+}
+.envelope {
+      background: #fff0f5;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px var(--shadow);
+      text-align: left;
+      max-width: 700px;
+      margin: 20px auto;
+      animation: fadeInNote 1s ease-out;
+    }
+
+    .envelope p {
+      white-space: pre-line;
+      font-size: 1.05em;
+      line-height: 1.7em;
+      color: #3b3b3b;
+    }
+
+    @keyframes fadeInNote {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 18px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 12px;
+      width: 100%;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+    }
+
+    @media (max-width: 600px) {
+      .stat-box {
+        padding: 12px;
+      }
+      .gallery img, .love-frame img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page 1: Welcome -->
+<section id="page1" class="active">
+  <header>
+    <h1>Hello, Comrade!</h1>
+    <p>Let me take you through the journey of my Cricket Star, my boyfriend Sundaresan 💙</p>
+  </header>
+  <button onclick="navigateTo('page2')">Meet My Star ➡️</button>
+</section>
+
+<!-- Page 2: Batting Stats -->
+<section id="page2">
+  <header>
+    <h1>Batting Stats 🏏</h1>
+    <p>Sundaresan’s bat speaks louder than words. Whether it’s a gritty single or a booming six, every shot he plays carries intent, elegance, and impact.</p>
+    <p>He isn't just a batter he's an artist at the crease, crafting masterpieces under pressure, anchoring innings with heart and hustle.</p>
+  </header>
+  <div class="gift-profile">
+    <div class="gift">
+    </div>
+
+    <div class="profile">
+      <img src="images\Sundaresan.jpg" alt="Sundaresan" />
+       <h3>Opening Batter | RHB | Right-arm Medium</h3>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat-box"><h2>185</h2><p>Matches</p></div>
+    <div class="stat-box"><h2>168</h2><p>Innings</p></div>
+    <div class="stat-box"><h2>18</h2><p>Not Outs</p></div>
+    <div class="stat-box"><h2>4680</h2><p>Total Runs</p></div>
+    <div class="stat-box"><h2>114*</h2><p>High Score</p></div>
+    <div class="stat-box"><h2>31.2</h2><p>Batting Avg</p></div>
+    <div class="stat-box"><h2>112.83</h2><p>Strike Rate</p></div>
+    <div class="stat-box"><h2>37</h2><p>30s</p></div>
+    <div class="stat-box"><h2>27</h2><p>50s</p></div>
+    <div class="stat-box"><h2>7</h2><p>100s</p></div>
+    <div class="stat-box"><h2>478</h2><p>Fours</p></div>
+    <div class="stat-box"><h2>182</h2><p>Sixes</p></div>
+  </div>
+  <button onclick="navigateTo('page3')">See His Bowling Magic 🎯</button>
+</section>
+
+<!-- Page 3: Bowling Stats -->
+<section id="page3">
+  <header>
+    <h1>Bowling Stats 🎯</h1>
+    <p>A bowler with fire in his eyes every over planned, every dot delivered like a commander!</p>
+  </header>
+  <div class="gift-profile">
+    <div class="gift">
+    </div>
+
+    <div class="profile">
+      <img src="images\Sundaresan.jpg" alt="Sundaresan" />
+      <h3>Opening Batter | RHB | Right-arm Medium</h3>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat-box"><h2>185</h2><p>Matches</p></div>
+    <div class="stat-box"><h2>37</h2><p>Innings</p></div>
+    <div class="stat-box"><h2>100</h2><p>Overs</p></div>
+    <div class="stat-box"><h2>32</h2><p>Wickets</p></div>
+    <div class="stat-box"><h2>5/9</h2><p>Best Bowling</p></div>
+    <div class="stat-box"><h2>22.81</h2><p>Bowling Avg</p></div>
+    <div class="stat-box"><h2>7.3</h2><p>Economy</p></div>
+    <div class="stat-box"><h2>321</h2><p>Dots</p></div>
+  </div>
+  <button onclick="navigateTo('page4')">View Wicketkeeper Brilliance 🧤</button>
+</section>
+
+<!-- Page 4: Fielding/Wicketkeeping -->
+<section id="page4">
+  <header>
+    <h1>Wicketkeeping & Fielding 🧤</h1>
+    <p>Behind the stumps, he’s a strategist quick, sharp, and commanding every move like a general.</p>
+  </header>
+  <div class="gift-profile">
+    <div class="gift">
+    </div>
+
+    <div class="profile">
+      <img src="images\Sundaresan.jpg" alt="Sundaresan" />
+      <h3>Opening Batter | RHB | Right-arm Medium</h3>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat-box"><h2>185</h2><p>Matches</p></div>
+    <div class="stat-box"><h2>64</h2><p>Catches</p></div>
+    <div class="stat-box"><h2>65</h2><p>Caught Behind</p></div>
+    <div class="stat-box"><h2>30</h2><p>Stumpings</p></div>
+    <div class="stat-box"><h2>15</h2><p>Run Outs</p></div>
+    <div class="stat-box"><h2>118</h2><p>Byes</p></div>
+  </div>
+  <button onclick="navigateTo('page5')">The Captaincy 👑</button>
+</section>
+<!-- Page 5: Captaincy Brilliance -->
+<section id="page5">
+    <header>
+        <h1>Captaincy Brilliance 👑</h1>
+        <p>He didn't just lead the team he inspired it. Every decision, every gesture, showed why he's born to lead.</p>
+    </header>
+    <div class="gift-profile">
+      <div class="gift">
+        <p>As a captain, he was calm under pressure, fierce in competition, and respectful in victory. His teammates looked up to him not just because he wore the armband, but because he earned it every single match.</p>
+        <p>He read the game like a seasoned general, always a few steps ahead. Whether it was a bowling change or a field setup, he had a sixth sense for what would turn the match.</p>
+        <p>Leadership came naturally to him. He knew when to push, when to motivate, and when to simply lead by example with his bat, his voice, and his unwavering spirit.</p>
+      </div>
+  
+      <div class="profile">
+        <img src="images\Sundaresan.jpg" alt="Sundaresan" />
+        <h3>Captain | Motivator | Game Reader</h3>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat-box"><h2>5</h2><p>Matches as Captain</p></div>
+      <div class="stat-box"><h2>3</h2><p>Tosses Won</p></div>
+      <div class="stat-box"><h2>60%</h2><p>Win Rate</p></div>
+      <div class="stat-box"><h2>Strategic Genius</h2><p>Field Placements</p></div>
+      <div class="stat-box"><h2>Always Backed</h2><p>Young Talent</p></div>
+      <div class="stat-box"><h2>High Morale</h2><p>In Every Game</p></div>
+    </div>
+    <button onclick="navigateTo('page6')">Mine</button>
+  </section>
+
+<!-- Page 6: Unwavering Support & Love -->
+<section id="page6">
+  <header>
+    <h1>Forever Proud of You 💖</h1>
+    <p>No matter where the scoreboard stands, you'll always be my Champion.</p>
+  </header>
+
+  <div class="gift-profile">
+    <div class="envelope">
+      <p>More than a player you’re my strength, my inspiration, and my forever comrade.<br><br>
+      I will always be your biggest supporter, your loudest motivator, your forever cheerleader.<br><br>
+      You’ll get every bit of the recognition you deserve from my heart, always. Whether it’s the career you choose or the paths you love,
+      <strong>unaku pudicha ponu, unaku pudicha career,endrume unnudan irukum.</strong><br><br>
+      You’ve made your mark with every run, every dive, every decision but most of all, with your heart. That’s what I fell for, and that’s what I’ll forever stand by.<br><br>
+      <strong>You’re always my Comrade. And I’ll be yours now and always. 💙</strong>
+      </p>
+    </div>
+
+    <div class="profile">
+      <img src="images\Sundaresan.jpg" alt="Sundaresan" />
+      <h3>Forever My Cricket Star 🌟</h3>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <div class="love-frame">
+      <img src="images\batting.jpg" alt="Hand Gesture" />
+    </div>
+    <div class="love-frame">
+      <img src="images\Cup.jpg" alt="Victory Pose" />
+    </div>
+    <div class="love-frame">
+      <img src="images\Hundred.jpg" alt="Celebration" />
+    </div>
+    <div class="love-frame">
+      <img src="images\MOM.jpg" alt="Heart Sign" />
+    </div>
+  </div>
+
+  <button onclick="navigateTo('page7')">Next</button>
+</section>
+<!-- Page 7: Still A Long Journey -->
+<section id="page7">
+    <header>
+      <h1>Still A Long Journey 🚶‍♂️💙</h1>
+      <p>This isn’t the end, love. It’s just the beginning of something even more beautiful.</p>
+    </header>
+  
+    <div class="gift-profile">
+      <div class="envelope">
+        <p>
+          Through every rise, every fall, every cheer, and every silent moment you’ve never walked alone. And you never will.<br><br>
+          I'm beyond proud of the journey you’ve walked so far, and I’m even more excited about the road that lies ahead.<br><br>
+          <strong>I’m happy to walk beside you through it all every inning, every dream, every moment.</strong><br><br>
+          I love you, Comrade. Not just today, but for every day life gifts us together. 💙<br><br>
+          <strong>Be my Comrade, life long</strong> 💍💫
+        </p>
+      </div>
+  
+      <div class="profile">
+        <img src="images\us.jpg" alt="Sundaresan" />
+        <h3>My Forever Journey Partner 💑</h3>
+      </div>
+    </div>
+
+    <div class="romantic-photo-grid">
+      <div class="love-frame"><img src="images\we1.jpg" alt="Memory 1" /></div>
+      <div class="love-frame"><img src="images\we2.jpg" alt="Memory 2" /></div>
+      <div class="love-frame"><img src="images\we 3.jpg" alt="Memory 3" /></div>
+      <div class="love-frame"><img src="images\we4.jpg" alt="Memory 4" /></div>
+    </div>
+  
+    <button onclick="navigateTo('page1')">Back to Start 🔁</button>
+  </section>
+  
+
+<script>
+  function navigateTo(pageId) {
+    document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+  }
+    function navigateTo(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+   <footer>
+  Made with 💗 for My Cricket Star.
+</footer>
+</body>
+</html>
